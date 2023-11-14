@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avances semanales</title>
+    <style>
+        body {
+            background-color: #3498db; /* Nuevo color de fondo (azul) */
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Hace que el cuerpo ocupe toda la altura de la ventana */
+            overflow: hidden; /* Evita que se muestre la barra de desplazamiento */
+        }
+
+        #question {
+            font-size: 24px;
+            color: #ecf0f1; /* Nuevo color de texto (blanco) */
+            margin-top: 10px;
+        }
+
+        #description {
+            font-size: 16px;
+            color: #ecf0f1; /* Nuevo color de texto (blanco) */
+            margin: 10px auto; /* Margen superior e inferior de 10px, centrado horizontalmente */
+            max-width: 80%; /* Ancho máximo del texto para evitar que sea demasiado largo */
+
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 300px; /* Ancho máximo para contener los botones */
+        }
+
+        .button {
+            flex: 1;
+            padding: 5px 10px; /* Ajustes para hacer los botones más pequeños */
+            margin: 10px;
+            font-size: 14px; /* Ajustes para reducir el tamaño del texto */
+            cursor: pointer;
+            position: absolute;
+            transition: transform 0.5s ease; /* Animación de movimiento */
+        }
+
+        #yesButton {
+            background-color: #2ecc71; /* Nuevo color de botón (verde) */
+            color: white;
+            border: none;
+            text-decoration: none;  /* Elimina el subrayado en el enlace */
+            left: 30%;
+        }
+
+        #noButton {
+            background-color: #e74c3c; /* Nuevo color de botón (rojo) */
+            color: white;
+            border: none;
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="question">¿Querés cargar los avances?</div>
+
+    <p id="description">¡Hola equipo!
+
+Como este será mi último informe semanal, y como agradecimiento por todo el esfuerzo y 
+colaboración que hemos compartido, he decidido darles una pequeña pausa en la rutina. 
+Esta vez, la elección está en sus manos:</p>
+
+
+
+    <div class="button-container">
+        <a id="yesButton" class="button" href="https://docs.google.com/spreadsheets/d/1jFGohPBxLVVV_LO5ze0Cs7YiX2V5xTKHpw0C2eF10JA/edit#gid=0" target="_blank">Quiero cargar los avances</a>
+        
+        <button id="noButton" class="button" onmouseover="moveButton()">No quiero cargar los avances</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById("noButton");
+            var maxX = document.body.clientWidth - button.offsetWidth;
+            var maxY = document.body.clientHeight - button.offsetHeight;
+
+            var randomX = Math.floor(Math.random() * maxX);
+            var randomY = Math.floor(Math.random() * maxY);
+
+            // Verificar límites de la pantalla
+            randomX = Math.max(0, Math.min(randomX, maxX));
+            randomY = Math.max(0, Math.min(randomY, maxY));
+
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+        }
+    </script>
+
+</body>
+</html>
